@@ -13,13 +13,13 @@ with open('history_mirror.csv', 'r', encoding='utf-8') as data:
     data = list(map(lambda x: x.strip().split(','), data.readlines()))[1:]
     #открываем CSV файл и разбиваем каждую строку по запятым
 
-hashed = []
+hashed = [] #список строк с хеш-суммами
 
 
 for el in data:
-    hashed.append([hash(el[2]), el[0], el[1], el[2]])
+    hashed.append([hash(el[2]), el[0], el[1], el[2]])#добавляем в строки с хеш-суммами
 
-with open('users_with_hash.csv.csv', 'w', encoding='utf-8') as file:
+with open('users_with_hash.csv', 'w', encoding='utf-8') as file:
     title = [['ID', 'date', 'username', 'verdict']]
     full = title + hashed #Полный список, с заголовком, подготовленный к выводу
     writer = csv.writer(file)
